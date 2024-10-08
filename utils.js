@@ -17,7 +17,7 @@ const getClimateImpactPerMonth = (dailyDistance) => {
     };
 };
 exports.getClimateImpactPerMonth = getClimateImpactPerMonth;
-const clothingRecs = (weather) => {
+const clothingRecs = (weather) => { // function for clothing recommendations using temperature, rainfall and windspeed
     if (weather.temp >= 8 && weather.rain >= 0.0 && weather.wind > 9) {
         return 'Top: Optional light jacket Bottom: Shorts or light trousers';
     }
@@ -33,16 +33,7 @@ const clothingRecs = (weather) => {
     if (weather.temp <= 3 && weather.rain <= 0.0 && weather.wind >= 10) {
         return 'Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers';
     }
-    return undefined;
+    return 'No clothing recommendations';
 };
 exports.clothingRecs = clothingRecs;
 (0, exports.clothingRecs)({ temp: 2, rain: 0.0, wind: 10 });
-/* what I need to do:
-1. define Windy and warmer Weather, Rainy and Cool Weather, Cold and Windy Weather, Very Cold and Possible Snow
-put some value to that, what is windy and warmer weather??
-2. put in  the function, if the weather is cool and rainy today= wear this
-if the weather is cold and rainy= wear this
-
-How to do this?
-
-*/

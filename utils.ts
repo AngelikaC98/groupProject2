@@ -46,12 +46,3 @@ export const clothingRecs = (weather: Weather) => {
 clothingRecs({ temp: 2, rain: 0.0, wind: 10})
 
 
-/* what I need to do:
-1. define Windy and warmer Weather, Rainy and Cool Weather, Cold and Windy Weather, Very Cold and Possible Snow
-put some value to that, what is windy and warmer weather??
-2. put in  the function, if the weather is cool and rainy today= wear this
-if the weather is cold and rainy= wear this
-
-How to do this?
-
-*/
