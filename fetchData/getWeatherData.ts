@@ -7,8 +7,7 @@ export const getWeatherData = async (ids?: number[]) => {
   url.searchParams.append("view", "xml");
   url.searchParams.append("ids", ids ? ids.join(";") : "1"); // "Station ID": 1 (Reykjavík). Semi-colon separated. See [http://www.vedur.is/vedur/stodvar] for more IDs
   url.searchParams.append("time", "1h"); // time interval: 1h, 3h, 6h, 12h, 24h. Default 1h
-  url.searchParams.append("params", "T;W;R"); // Data to show: T (temperature) W (Weather description) R (Accumulated rainfall). Default is D;T;F; Semi-colon separated.
-  console.log("url", url.toString());
+  url.searchParams.append("params", "T;W;R;F;"); // Data to show: T (temperature) W (Weather description) R (Accumulated rainfall). Default is D;T;F; Semi-colon separated.
 
   const response = await fetch(url.toString());
   if (!response.ok) {
@@ -28,9 +27,10 @@ export const getWeatherData = async (ids?: number[]) => {
       temp: forecast.querySelector("T")?.textContent,
       weather: forecast.querySelector("W")?.textContent,
       rain: forecast.querySelector("R")?.textContent,
+      wind: forecast.querySelector("F")?.textContent,
     };
     data.set(dateTime, weatherData);
   });
 
-  return doc;
+  return data;
 };

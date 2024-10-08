@@ -7,6 +7,6 @@ describe("getWeatherData", () => {
   it("fetches weather data", async () => {
     // // Call the function
     const data = await getWeatherData([1, 1471]);
-    console.log(data);
+    // console.log(data);
   });
 });
