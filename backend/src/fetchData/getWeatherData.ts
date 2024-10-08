@@ -21,7 +21,6 @@ export const getWeatherData = async (stationId?: number) => {
   url.searchParams.append("ids", stationId ? stationId + "" : "1"); // "Station ID": 1 (Reykjavík). Semi-colon separated. See [http://www.vedur.is/vedur/stodvar] for more IDs
   url.searchParams.append("time", "2h"); // time interval: 1h, 3h, 6h, 12h, 24h. Default 1h
   url.searchParams.append("params", "T;W;R"); // Data to show: T (temperature) W (Weather description) R (Accumulated rainfall). Default is D;T;F; Semi-colon separated.
-  console.log("url", url.toString());
 
   try {
     const response = await fetch(url.toString());

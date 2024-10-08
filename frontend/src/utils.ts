@@ -18,3 +18,14 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
     ),
   };
 };
+
+const API_ENDPOINT = "http://localhost:3000";
+
+export const getWeatherData = async (stationId?: number) => {
+  const url = new URL(API_ENDPOINT + "/weather");
+  if (stationId) {
+    url.searchParams.append("stationId", stationId + "");
+  }
+  const res = await fetch(url.toString());
+  return res.json();
+};

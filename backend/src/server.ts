@@ -13,7 +13,3 @@ app.get("/weather", express.json(), async (req, res) => {
     res.status(500).json({ error: weather.error });
   }
 });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
