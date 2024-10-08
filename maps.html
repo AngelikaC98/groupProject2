@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Should I cycle or drive</title>
+  <style>
+    
+    
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Should I cycle or drive?</h2>
+
+ 
+  <div>
+    <label for="origin">Starting point: </label>
+    <input type="text" id="origin" placeholder="Enter starting point" value="Reykjavik, Iceland">
+    <label for="destination">Destination: </label>
+    <input type="text" id="destination" placeholder="Enter destination" value="Reykjavik, Iceland">
+    <button onclick="calculateRoute()">Get Directions</button>
+  </div>
+
+  
+  <div id="map"></div>
+
+  <script>
+    let map, directionsService, directionsRenderer;
+
+    function initMap() {
+      
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 64.9631, lng: -19.0208 }, 
+        zoom: 7
+      });
+
+    
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+    }
+
+    function calculateRoute() {
+      const origin = document.getElementById('origin').value;
+      const destination = document.getElementById('destination').value;
+
+      const request = {
+        origin: origin,
+        destination: destination,
+        travelMode: 'DRIVING', // Can be changed to 'BICYCLING', 'WALKING', or 'TRANSIT'
+      };
+
+      
+      directionsService.route(request, function (result, status) {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(result);
+        } else {
+          alert('Directions request failed due to ' + status);
+        }
+      });
+    }
+  </script>
+
+  <!-- Google Maps API with API key AIzaSyBha9m0ShHnMGUVW4YTDD7FPk9tEWsQ8sc-->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBha9m0ShHnMGUVW4YTDD7FPk9tEWsQ8sc&callback=initMap">
+  </script>
+</body>
+</html>
+
+
+
+
