@@ -4,64 +4,77 @@ type Weather = {
   wind: number;
 };
 
-export enum clothing {
-  WARM_BASE_LAYER = "Warm base layer",
-  BASE_LAYER = "Base layer",
-  WARM_JACKET = "Warm jacket",
-  WARM_LONG_TROUSERS = "Warm long trousers",
-  GLOVES = "Gloves",
-  JACKET = "Jacket",
-  TROUSERS = "Trousers",
-  RAIN_COAT = "Rain coat",
-  RAIN_TROUSERS = "Rain trousers",
+export enum Clothing {
+  WarmBaseLayer = "Warm base layer",
+  BaseLayer = "Base layer",
+  WarmJacket = "Warm jacket",
+  WarmLongTrousers = "Warm long trousers",
+  Gloves = "Gloves",
+  Jacket = "Jacket",
+  Trousers = "Trousers",
+  RainCoat = "Rain coat",
+  RainTrousers = "Rain trousers",
 }
 
-export type ClothingRecommendation = { Top: clothing[]; Bottom: clothing[] };
+export type ClothingRecommendation = { Top: Clothing[]; Bottom: Clothing[] };
 
 export const clothingRecs = (weather: Weather): ClothingRecommendation => {
-  if (weather.temp <= 0 && weather.rain === 0.0 && weather.wind == 0) {
+  const { temp, rain, wind } = weather;
+  const {
+    WarmBaseLayer,
+    BaseLayer,
+    WarmJacket,
+    WarmLongTrousers,
+    Gloves,
+    Jacket,
+    Trousers,
+    RainCoat,
+    RainTrousers,
+  } = Clothing;
+
+  if (temp <= 0 && rain === 0.0 && wind == 0) {
     return {
-      Top: [clothing.WARM_JACKET, clothing.WARM_BASE_LAYER],
-      Bottom: [clothing.WARM_LONG_TROUSERS, clothing.GLOVES],
+      Top: [WarmJacket, WarmBaseLayer],
+      Bottom: [WarmLongTrousers, Gloves],
     };
   }
-  if (weather.temp <= 5 && weather.rain === 0.0 && weather.wind == 0) {
+  if (temp <= 5 && rain === 0.0 && wind == 0) {
     return {
-      Top: [clothing.JACKET, clothing.BASE_LAYER],
-      Bottom: [clothing.WARM_LONG_TROUSERS],
+      Top: [Jacket, BaseLayer],
+      Bottom: [WarmLongTrousers],
     };
   }
-  if (weather.temp > 5 && weather.rain === 0.0 && weather.wind == 0) {
-    return { Top: [clothing.JACKET], Bottom: [clothing.TROUSERS] };
+  if (temp > 5 && rain === 0.0 && wind == 0) {
+    return { Top: [Jacket], Bottom: [Trousers] };
   }
 
-  if (weather.temp <= 0 && weather.rain >= 0.0 && weather.wind == 0) {
+  if (temp <= 0 && rain >= 0.0 && wind == 0) {
     return {
-      Top: [clothing.WARM_BASE_LAYER, clothing.RAIN_COAT],
-      Bottom: [clothing.WARM_LONG_TROUSERS, clothing.RAIN_TROUSERS],
+      Top: [WarmBaseLayer, RainCoat],
+      Bottom: [WarmLongTrousers, RainTrousers],
     };
   }
-  if (weather.temp > 0 && weather.rain >= 0.0 && weather.wind == 0) {
+  if (temp > 0 && rain >= 0.0 && wind == 0) {
     return {
-      Top: [clothing.RAIN_COAT],
-      Bottom: [clothing.RAIN_TROUSERS],
+      Top: [RainCoat],
+      Bottom: [RainTrousers],
     };
   }
 
-  if (weather.temp <= 0 && weather.rain === 0.0 && weather.wind <= 5) {
+  if (temp <= 0 && rain === 0.0 && wind <= 5) {
     return {
-      Top: [clothing.WARM_JACKET, clothing.WARM_BASE_LAYER],
-      Bottom: [clothing.WARM_LONG_TROUSERS, clothing.GLOVES],
+      Top: [WarmJacket, WarmBaseLayer],
+      Bottom: [WarmLongTrousers, Gloves],
     };
   }
-  if (weather.temp <= 5 && weather.rain === 0.0 && weather.wind <= 5) {
+  if (temp <= 5 && rain === 0.0 && wind <= 5) {
     return {
-      Top: [clothing.JACKET, clothing.BASE_LAYER],
-      Bottom: [clothing.WARM_LONG_TROUSERS],
+      Top: [Jacket, BaseLayer],
+      Bottom: [WarmLongTrousers],
     };
   }
-  if (weather.temp > 5 && weather.rain === 0.0 && weather.wind <= 5) {
-    return { Top: [clothing.JACKET], Bottom: [clothing.TROUSERS] };
+  if (temp > 5 && rain === 0.0 && wind <= 5) {
+    return { Top: [Jacket], Bottom: [Trousers] };
   }
 
   return { Top: [], Bottom: [] };
