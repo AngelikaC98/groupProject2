@@ -77,5 +77,8 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return { Top: [Jacket], Bottom: [Trousers] };
   }
 
+  if (temp >= 6 && rain == 0.0 && wind >= 6){
+    return {Top: [Jacket], Bottom: [Trousers]}
+  }
   return { Top: [], Bottom: [] };
 };
