@@ -1,5 +1,6 @@
 // To use endpoint read: [https://www.vedur.is/media/vedurstofan/XML-thjonusta-vedurspar.pdf]
 import { XMLParser } from "fast-xml-parser";
+import fetch from 'node-fetch';
 
 export type WeatherDataIncoming = {
   ftime: string;
@@ -9,7 +10,10 @@ export type WeatherDataIncoming = {
 export type WeatherData = {
   dateTime: Date;
   weatherData: {
-    [key: string]: number | string;
+    temp: number,
+    weather: string,
+    rain: number,
+    wind: number,
   };
 };
 
@@ -35,10 +39,10 @@ export const getWeatherData = async (stationId?: number) => {
     xml.forecasts.station.forecast.forEach((forecast: WeatherDataIncoming) => {
       const dateTime = new Date(forecast.ftime ?? "");
       const weatherData = {
-        temp: forecast.T ?? -1,
+        temp: Number(forecast.T) ?? -1,
         weather: forecast.W ?? "",
-        rain: forecast.R ?? -1,
-        wind: forecast.F ?? -1,
+        rain: Number(forecast.R) ?? -1,
+        wind: Number(forecast.F) ?? -1,
       };
       data.push({ dateTime, weatherData });
     });
