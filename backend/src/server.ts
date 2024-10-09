@@ -1,7 +1,6 @@
 import express from "express";
 import { getWeatherData } from "./fetchData/getWeatherData";
 import { getDirections } from "./fetchData/getDirections";
-import getClothingRecs from './fetchData/getClothingRecs';
 
 const app = express();
 const port = 3000;

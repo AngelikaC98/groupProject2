@@ -1,6 +1,5 @@
 // To use endpoint read: [https://www.vedur.is/media/vedurstofan/XML-thjonusta-vedurspar.pdf]
 import { XMLParser } from "fast-xml-parser";
-import fetch from 'node-fetch';
 
 export type WeatherDataIncoming = {
   ftime: string;
@@ -10,10 +9,10 @@ export type WeatherDataIncoming = {
 export type WeatherData = {
   dateTime: Date;
   weatherData: {
-    temp: number,
-    weather: string,
-    rain: number,
-    wind: number,
+    temp: number;
+    weather: string;
+    rain: number;
+    wind: number;
   };
 };
 
