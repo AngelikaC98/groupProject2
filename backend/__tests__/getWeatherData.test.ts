@@ -17,12 +17,14 @@ describe("getWeatherData", () => {
           <T>1.0</T>
           <W>Partly cloudy</W>
           <R>0.0</R>
+          <F>10</F>
         </forecast>
         <forecast>
           <ftime>2022-01-31T09:00:00Z</ftime>
           <T>2.0</T>
           <W>Partly cloudy</W>
           <R>0.0</R>
+          <F>10</F>
         </forecast>
       </station>
     </forecasts>`;
@@ -32,12 +34,12 @@ describe("getWeatherData", () => {
     const expectedData = [
       {
         dateTime: new Date("2022-01-31T08:00:00Z"),
-        weatherData: { temp: 1, weather: "Partly cloudy", rain: 0 },
+        weatherData: { temp: 1, weather: "Partly cloudy", rain: 0, wind: 10 },
       },
 
       {
         dateTime: new Date("2022-01-31T09:00:00Z"),
-        weatherData: { temp: 2, weather: "Partly cloudy", rain: 0 },
+        weatherData: { temp: 2, weather: "Partly cloudy", rain: 0, wind: 10 },
       },
     ];
 

@@ -18,6 +18,34 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
     ),
   };
 };
+type Weather = {
+  temp: number,
+  rain: number,
+  wind: number,
+}
+export const clothingRecs = (weather: Weather) => {
+  if (weather.temp >= 8 && weather.rain >= 0.0 && weather.wind > 9) {
+    return 'Top: Optional light jacket Bottom: Shorts or light trousers'
+  }
+  if (weather.temp <= 2 && weather.rain <= 0.0 && weather.wind >= 12) {
+    return 'Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers, gloves and hat'
+  }
+  if (weather.temp <= 8 && weather.rain <= 0.0 && weather.wind >= 11) {
+    return 'Top: wear a jacket and a base layer. Bottom: Long warm trousers'
+  }
+  if (weather.temp <= 5 && weather.rain >= 0.4 && weather.wind >= 11) {
+    return 'Top: Warm base layer and rain coat. Bottom: Warm long trousers and rain trousers'
+  }
+  if (weather.temp <= 3 && weather.rain <= 0.0 && weather.wind >= 10) {
+    return 'Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers'
+  }
+  return undefined;
+
+}
+
+clothingRecs({ temp: 2, rain: 0.0, wind: 10 })
+
+
 
 const API_ENDPOINT = "http://localhost:3000";
 
@@ -28,4 +56,23 @@ export const getWeatherData = async (stationId?: number) => {
   }
   const res = await fetch(url.toString());
   return res.json();
+};
+
+export const getHealthImpact = (minutes: number) => {
+  // Cycle commuting was associated with a lower risk of CVD, cancer, and all cause mortality.
+  // Link to the study: [https://www.bmj.com/content/357/bmj.j1456?tab=related#datasupp]
+
+  // regular cycling cut the risk of death from any cause by 41%, the incidence of cancer by 45% and heart disease by 46%.
+  // Link [https://www.bbc.com/news/health-39641122]
+
+  // Each week, adults should move briskly for at least 150 minutes
+
+  return {
+    percentOfRecommendedActivity: Math.round((minutes / 150 / 7) * 100),
+    generalHealthBenefits: [
+      "cut the risk of death from any cause by 41%",
+      "decrease the incidence of cancer by 45%",
+      "decrease the incidence of heart disease by 46%",
+    ],
+  };
 };
