@@ -1,5 +1,5 @@
 import fetchMock from "jest-fetch-mock";
-import { getWeatherData } from "../src/fetchData/getWeatherData";
+import { getWeatherData } from "../../frontend/src/getWeatherData";
 
 fetchMock.enableMocks();
 
