@@ -1,5 +1,5 @@
 import express from "express";
-import { getWeatherData } from "./fetchData/getWeatherData";
+import { getWeatherData } from "../../frontend/src/getWeatherData";
 import { getDirections } from "./fetchData/getDirections";
 
 const app = express();
