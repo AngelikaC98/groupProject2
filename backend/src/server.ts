@@ -1,9 +1,13 @@
 import express from "express";
-import { getWeatherData } from "../../frontend/src/getWeatherData";
+const cors = require('cors');
+
+import { getWeatherData } from "./fetchData/getWeatherData";
 import { getDirections } from "./fetchData/getDirections";
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 app.get("/weather", express.json(), async (req, res) => {
   const stationId: number = Number(req.query.stationId);
