@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start": "tsc --watch",
     "test": "jest"
   },
   "keywords": [],
