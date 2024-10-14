@@ -1,16 +1,4 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getHealthImpact = exports.getWeatherData = exports.clothingRecs = exports.getClimateImpactPerMonth = void 0;
-const getClimateImpactPerMonth = (dailyDistance) => {
+export const getClimateImpactPerMonth = (dailyDistance) => {
     const TOYOTA_YARIS_CO2_PER_KM = 127; // grams CO2 per kilometre (sourced from Transport Direct [https://www.aef.org.uk/downloads/Grams_CO2_transportmodesUK.pdf])
     const TESLA_MODEL3_CO2_PER_KM = 0.76; // grams CO2 per kilometre in Iceland (sourced from Landsvirkjun [https://www.landsvirkjun.com] and Tesla [https://www.tesla.com])
     const TREE_CO2_ABSORPTION_PER_MONTH = 21000 / 12; // grams CO2 intake of a fully grown tree per month (sourced from Urban Forestry Network [http://www.urbanforestrynetwork.org])
@@ -25,8 +13,7 @@ const getClimateImpactPerMonth = (dailyDistance) => {
         treesEquivalentEle: Math.trunc(savedCO2EleKg / TREE_CO2_ABSORPTION_PER_MONTH),
     };
 };
-exports.getClimateImpactPerMonth = getClimateImpactPerMonth;
-const clothingRecs = (weather) => {
+export const clothingRecs = (weather) => {
     if (weather.temp >= 8 && weather.rain >= 0.0 && weather.wind > 9) {
         return 'Top: Optional light jacket Bottom: Shorts or light trousers';
     }
@@ -44,19 +31,27 @@ const clothingRecs = (weather) => {
     }
     return undefined;
 };
-exports.clothingRecs = clothingRecs;
-(0, exports.clothingRecs)({ temp: 2, rain: 0.0, wind: 10 });
+clothingRecs({ temp: 2, rain: 0.0, wind: 10 });
 const API_ENDPOINT = "http://localhost:3000";
-const getWeatherData = (stationId) => __awaiter(void 0, void 0, void 0, function* () {
+export const getWeatherData = async (stationId) => {
     const url = new URL(API_ENDPOINT + "/weather");
     if (stationId) {
         url.searchParams.append("stationId", stationId + "");
     }
-    const res = yield fetch(url.toString());
+    const res = await fetch(url.toString());
     return res.json();
-});
-exports.getWeatherData = getWeatherData;
-const getHealthImpact = (minutes) => {
+};
+async function showWeather() {
+    let weather = await getWeatherData();
+    let element = document.getElementsByClassName("today-weather")[0];
+    let weatherNow = weather[3].weatherData;
+    element.innerHTML = `<p>Temp: ${weatherNow.temp}℃</p>
+  <p> Wind speed: ${weatherNow.wind} m/s</p>
+  <p> Rain: ${weatherNow.rain}mm </p>
+  <p> ${weatherNow.weather}</p>`;
+}
+showWeather();
+export const getHealthImpact = (minutes) => {
     // Cycle commuting was associated with a lower risk of CVD, cancer, and all cause mortality.
     // Link to the study: [https://www.bmj.com/content/357/bmj.j1456?tab=related#datasupp]
     // regular cycling cut the risk of death from any cause by 41%, the incidence of cancer by 45% and heart disease by 46%.
@@ -71,4 +66,3 @@ const getHealthImpact = (minutes) => {
         ],
     };
 };
-exports.getHealthImpact = getHealthImpact;

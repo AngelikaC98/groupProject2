@@ -67,13 +67,8 @@ async function showWeather() {
   <p> Wind speed: ${weatherNow.wind} m/s</p>
   <p> Rain: ${weatherNow.rain}mm </p>
   <p> ${weatherNow.weather}</p>`
-
-
-  // 1. Call `getWeatherData()` and save that data to a variable `weather`.
-  // 2. Find the `.weather-today` element in the DOM.
-  // 3. Inject the weather data from the `weather` variable into the element that we found in step 2.
-  // DONE! 🎉
 }
+
 showWeather();
 
 

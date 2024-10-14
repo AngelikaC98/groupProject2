@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="utils.js" type="module"></script> <!-- Include utils.js here -->
-    <script src="script.js" type="module"></script> <!-- Your main script -->
-    <link href="output.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-    </style>
-    <title>Cycle or Drive</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frontend/dist/src/utils.js" type="module"></script> <!-- Include utils.js here -->
+  <link href="output.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+  </style>
+
+  <title>Cycle or Drive</title>
+  <script type="module" src="/frontend/dist/src/utils.js"></script>
 </head>
+
 <body class="font-sans relative bg-white">
 
-    <header>
-        <img src="../../frontend/public/assets/assets/logo (3).svg" alt="Logo" class="absolute top-2 left-8 w-48">
-        
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-        <div class="flex justify-center mt-6">
-            <dotlottie-player src="https://lottie.host/723d8c65-3763-401e-82f8-87e2e5fa7ad0/hLQZDYgKX5.json"  
-                speed="1" style="width: 300px; height: 300px;" loop autoplay>
-            </dotlottie-player>
-        </div>
-    </header>
+  <header>
+    <img src="../../frontend/public/assets/assets/logo (3).svg" alt="Logo" class="absolute top-2 left-8 w-48">
 
-    <main class="flex flex-col items-center mt-12 space-y-8">
-        <!-- Text Section -->
-        <div class="text-center">
-            <h1 class="text-2xl font-light">Where do you want</h1>
-            <div class="flex justify-center space-x-1 mt-2">
-                <h1 class="text-2xl font-light">to</h1>
-                <h1 class="text-2xl font-bold text-cyan-900">Bike today?</h1>
-            </div>
-        </div>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <div class="flex justify-center mt-6">
+      <dotlottie-player src="https://lottie.host/723d8c65-3763-401e-82f8-87e2e5fa7ad0/hLQZDYgKX5.json" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay>
+      </dotlottie-player>
+    </div>
+  </header>
+  <div class="flex flex-col items-center">
+    <h1 class="text-3xl font-semibold text-cyan-900 p-10">Weather today</h1>
+    <div
+      class="today-weather bg-gradient-to-b from-cyan-900 to-cyan-500 text-white font-bold p-16 text-2xl rounded-xl shadow-lg leading-loose text-center">
 
-        <!-- Content Section -->
-        <section class="container mx-auto py-10 text-center">
-            <h1 class="text-4xl font-bold text-black">Weather</h1>
-            <button id="decision-button" class="bg-[#28536B] border-2 border-transparent text-white px-14 py-2 rounded hover:bg-white hover:text-[#28536B] hover:border-[#28536B] transition-all">
-                Should I cycle or drive
-            </button>
-        </section>
-    </main>
+    </div>
+  </div>
+  <main class="flex flex-col items-center mt-12 space-y-8">
+    <!-- Content Section -->
+    <section class="container mx-auto py-10 text-center">
+      <button id="decision-button"
+        class="bg-[#28536B] border-2 border-transparent text-white px-14 py-2 rounded hover:bg-white hover:text-[#28536B] hover:border-[#28536B] transition-all">
+        Should I cycle or drive
+      </button>
+    </section>
+  </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-white text-black text-center py-4">
-        <h1 class="text-4xl font-bold mt-0">Weather Conditions</h1>
-    </footer>
+  <!-- Footer Section -->
+  <footer class="bg-white text-black text-center py-4">
+  </footer>
 
-    <script src="functionapp.js">
-        //document.getElementById('decision-button').addEventListener('click', async () => {
-            //try {
-                //const weatherData = await getWeatherData(); // Fetch weather data from utils.js
-                //const weatherNow = weatherData[3].weatherData; // Adjust index based on your actual API response
+  <script src="functionapp.js">
+    //document.getElementById('decision-button').addEventListener('click', async () => {
+    //try {
+    //const weatherData = await getWeatherData(); // Fetch weather data from utils.js
+    //const weatherNow = weatherData[3].weatherData; // Adjust index based on your actual API response
 
-                // Check if wind speed is greater than 15 m/s and rain is greater than 2 mm
-                //if (weatherNow.wind > 15 || weatherNow.rain > 2) {
-                    //alert("You should drive due to bad weather conditions (wind or rain).");
-                    //window.location.href = "drive.html";  // Redirect to drive.html
-                //} else {
-                    //alert("You should bike, the weather conditions are good.");
-                    //window.location.href = "cycle.html";  // Redirect to cycle.html
-                //}
-            //} catch (error) {
-                //console.error("Error fetching weather data:", error);
-                //alert("Failed to fetch weather data. Please try again later.");
-            //}
-        //});
-    </script>
+    // Check if wind speed is greater than 15 m/s and rain is greater than 2 mm
+    //if (weatherNow.wind > 15 || weatherNow.rain > 2) {
+    //alert("You should drive due to bad weather conditions (wind or rain).");
+    //window.location.href = "drive.html";  // Redirect to drive.html
+    //} else {
+    //alert("You should bike, the weather conditions are good.");
+    //window.location.href = "cycle.html";  // Redirect to cycle.html
+    //}
+    //} catch (error) {
+    //console.error("Error fetching weather data:", error);
+    //alert("Failed to fetch weather data. Please try again later.");
+    //}
+    //});
+  </script>
 </body>
+
 </html>
