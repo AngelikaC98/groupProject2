@@ -92,4 +92,6 @@ export const getHealthImpact = (minutes: number) => {
   };
 };
 
+
+
 export { }
