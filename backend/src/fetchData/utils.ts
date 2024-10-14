@@ -16,7 +16,7 @@ export enum Clothing {
   RainTrousers = "Rain trousers",
 }
 
-export type ClothingRecommendation = { Top: Clothing[]; Bottom: Clothing[],topPic:string[],bottomPic:string[] };
+export type ClothingRecommendation = { Top: Clothing[]; Bottom: Clothing[], topPic: string[], bottomPic: string[] };
 
 export const clothingRecs = (weather: Weather): ClothingRecommendation => {
   const { temp, rain, wind } = weather;
@@ -36,7 +36,7 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return {
       Top: [WarmJacket, WarmBaseLayer],
       Bottom: [WarmLongTrousers, Gloves],
-      topPic :["../../images/warm jacket.svg", "../../images/sweater.svg"],
+      topPic: ["../../images/warm jacket.svg", "../../images/sweater.svg"],
       bottomPic: ["../../images/warm trousers.svg", "../../images/gloves.svg"]
     };
   }
@@ -44,13 +44,13 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return {
       Top: [Jacket, BaseLayer],
       Bottom: [WarmLongTrousers],
-      topPic:["../../images/jacket.svg","../../images/long t-shirt.svg"],
+      topPic: ["../../images/jacket.svg", "../../images/long t-shirt.svg"],
       bottomPic: ["../../images/warm trousers.svg"]
     };
   }
   if (temp > 5 && rain === 0.0 && wind == 0) {
-    return { 
-      Top: [Jacket], 
+    return {
+      Top: [Jacket],
       Bottom: [Trousers],
       topPic: ["../..images/jacket.svg/"],
       bottomPic: ["../../images/trousers.svg"]
@@ -92,22 +92,22 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     };
   }
   if (temp > 5 && rain === 0.0 && wind <= 5) {
-    return { 
-      Top: [Jacket], 
-      Bottom: [Trousers], 
-      topPic:["../../images/jacket.svg"],
-      bottomPic:["../../images/trousers.svg"]
+    return {
+      Top: [Jacket],
+      Bottom: [Trousers],
+      topPic: ["../../images/jacket.svg"],
+      bottomPic: ["../../images/trousers.svg"]
     };
-      
+
   }
 
-  if (temp >= 6 && rain == 0.0 && wind >= 6){
+  if (temp >= 6 && rain == 0.0 && wind >= 6) {
     return {
-      Top: [Jacket], 
+      Top: [Jacket],
       Bottom: [Trousers],
-      topPic:["../../images/jacket.svg"],
+      topPic: ["../../images/jacket.svg"],
       bottomPic: ["../../images/trousers.svg"]
     }
   }
-    return { Top: [], Bottom: [] };
+  return { Top: [], Bottom: [], topPic: [], bottomPic: [] };
 };

@@ -1,4 +1,4 @@
-import { WeatherData, getWeatherData } from "../../../frontend/src/getWeatherData";
+import { WeatherData, getWeatherData } from "./getWeatherData";
 import { ClothingRecommendation, clothingRecs } from "./utils";
 
 export const getClothingRecs = async (

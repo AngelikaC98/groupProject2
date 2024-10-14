@@ -1,5 +1,6 @@
 // To use endpoint read: [https://www.vedur.is/media/vedurstofan/XML-thjonusta-vedurspar.pdf]
 import { XMLParser } from "fast-xml-parser";
+import fetch from 'node-fetch';
 
 export type WeatherDataIncoming = {
   ftime: string;
@@ -28,6 +29,7 @@ export const getWeatherData = async (stationId?: number) => {
   try {
     const response = await fetch(url.toString());
     if (!response.ok) {
+      console.error(response.text)
       return { error: "Failed to fetch weather data" };
     }
     const text = await response.text();
@@ -47,6 +49,7 @@ export const getWeatherData = async (stationId?: number) => {
     });
     return { success: data };
   } catch (error) {
+    console.error(error);
     return { error: "Failed to fetch weather data" };
   }
 };
