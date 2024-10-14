@@ -52,4 +52,5 @@ app.get("/directions", express_1.default.json(), (req, res) => __awaiter(void 0,
         res.status(500).json({ error: directions.error });
     }
 }));
+console.log(`Server is running at http://localhost:${port}.`);
 app.listen(port);

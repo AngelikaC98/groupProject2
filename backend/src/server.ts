@@ -46,4 +46,5 @@ app.get("/directions", express.json(), async (req, res) => {
   }
 });
 
+console.log(`Server is running at http://localhost:${port}.`)
 app.listen(port);
