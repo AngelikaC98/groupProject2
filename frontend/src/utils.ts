@@ -58,6 +58,26 @@ export const getWeatherData = async (stationId?: number) => {
   return res.json();
 };
 
+
+async function showWeather() {
+  let weather = await getWeatherData()
+  let element = document.getElementsByClassName("today-weather")[0]
+  let weatherNow = weather[3].weatherData
+  element.innerHTML = `<p>Temp: ${weatherNow.temp}℃</p>
+  <p> Wind speed: ${weatherNow.wind} m/s</p>
+  <p> Rain: ${weatherNow.rain}mm </p>
+  <p> ${weatherNow.weather}</p>`
+
+
+  // 1. Call `getWeatherData()` and save that data to a variable `weather`.
+  // 2. Find the `.weather-today` element in the DOM.
+  // 3. Inject the weather data from the `weather` variable into the element that we found in step 2.
+  // DONE! 🎉
+}
+showWeather();
+
+
+
 export const getHealthImpact = (minutes: number) => {
   // Cycle commuting was associated with a lower risk of CVD, cancer, and all cause mortality.
   // Link to the study: [https://www.bmj.com/content/357/bmj.j1456?tab=related#datasupp]
@@ -76,3 +96,5 @@ export const getHealthImpact = (minutes: number) => {
     ],
   };
 };
+
+export { }
