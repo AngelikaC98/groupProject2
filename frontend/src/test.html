@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="utils.js" type="module"></script> <!-- Include utils.js here -->
-    <script src="script.js" type="module"></script> <!-- Your main script -->
+   
+   
     <link href="output.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
@@ -23,7 +23,7 @@
             </dotlottie-player>
         </div>
     </header>
-
+<div class="today-weather"></div>
     <main class="flex flex-col items-center mt-12 space-y-8">
         <!-- Text Section -->
         <div class="text-center">
@@ -36,19 +36,27 @@
 
         <!-- Content Section -->
         <section class="container mx-auto py-10 text-center">
-            <h1 class="text-4xl font-bold text-black">Weather</h1>
-            <button id="decision-button" class="bg-[#28536B] border-2 border-transparent text-white px-14 py-2 rounded hover:bg-white hover:text-[#28536B] hover:border-[#28536B] transition-all">
+            <h1 class="text-4xl font-bold text-black"></h1>
+            <button id="getWeatherData" class="bg-[#28536B] border-2 border-transparent text-white px-14 py-2 rounded hover:bg-white hover:text-[#28536B] hover:border-[#28536B] transition-all">
                 Should I cycle or drive
             </button>
+            
         </section>
+        
+   
+  
+  <script src="../dist/src/app.js" type="module"></script>  <!-- Link to the bundled JS file -->
+        
     </main>
 
     <!-- Footer Section -->
     <footer class="bg-white text-black text-center py-4">
-        <h1 class="text-4xl font-bold mt-0">Weather Conditions</h1>
+        <h1 class="text-4xl font-bold mt-0">Weather </h1>
     </footer>
 
-    <script src="functionapp.js">
+    <script>
+
+        
         //document.getElementById('decision-button').addEventListener('click', async () => {
             //try {
                 //const weatherData = await getWeatherData(); // Fetch weather data from utils.js
