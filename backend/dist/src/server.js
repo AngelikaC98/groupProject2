@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const cors = require('cors');
 const getWeatherData_1 = require("./fetchData/getWeatherData");
 const getDirections_1 = require("./fetchData/getDirections");
+const getClothingRecs_1 = require("./fetchData/getClothingRecs");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(cors());
@@ -24,6 +25,16 @@ app.get("/weather", express_1.default.json(), (req, res) => __awaiter(void 0, vo
     const weather = yield (0, getWeatherData_1.getWeatherData)(stationId);
     if (weather.success) {
         res.status(200).json(weather.success);
+    }
+    else {
+        res.status(500).json({ error: weather.error });
+    }
+}));
+app.get("/clothes", express_1.default.json(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const weather = yield (0, getWeatherData_1.getWeatherData)(1);
+    if (weather.success) {
+        const clothes = yield (0, getClothingRecs_1.getClothingRecs)(weather.success);
+        res.status(200).json(clothes);
     }
     else {
         res.status(500).json({ error: weather.error });

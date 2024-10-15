@@ -19,6 +19,7 @@ export enum Clothing {
 export type ClothingRecommendation = { Top: Clothing[]; Bottom: Clothing[], topPic: string[], bottomPic: string[] };
 
 export const clothingRecs = (weather: Weather): ClothingRecommendation => {
+  console.log(weather)
   const { temp, rain, wind } = weather;
   const {
     WarmBaseLayer,
@@ -34,17 +35,17 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
 
   if (temp <= 0 && rain === 0.0 && wind == 0) {
     return {
-      Top: [WarmJacket, WarmBaseLayer],
-      Bottom: [WarmLongTrousers, Gloves],
-      topPic: ["../../images/warm jacket.svg", "../../images/sweater.svg"],
-      bottomPic: ["../../images/warm trousers.svg", "../../images/gloves.svg"]
+      Top: [WarmJacket],
+      Bottom: [WarmLongTrousers],
+      topPic: ["../../images/warm jacket.svg"],
+      bottomPic: ["../../images/warm trousers.svg"]
     };
   }
   if (temp <= 5 && rain === 0.0 && wind == 0) {
     return {
-      Top: [Jacket, BaseLayer],
+      Top: [Jacket],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/jacket.svg", "../../images/long t-shirt.svg"],
+      topPic: ["../../images/jacket.svg"],
       bottomPic: ["../../images/warm trousers.svg"]
     };
   }
@@ -59,10 +60,10 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
 
   if (temp <= 0 && rain >= 0.0 && wind == 0) {
     return {
-      Top: [WarmBaseLayer, RainCoat],
-      Bottom: [WarmLongTrousers, RainTrousers],
-      topPic: ["../../images/sweater.svg", "../../images/rain coat.svg"],
-      bottomPic: ["../../images/warm trousers.svg", "../../images/rain trousers.svg"]
+      Top: [RainCoat],
+      Bottom: [RainTrousers],
+      topPic: ["../../images/rain coat.svg"],
+      bottomPic: ["../../images/rain trousers.svg"]
     };
   }
   if (temp > 0 && rain >= 0.0 && wind == 0) {
@@ -75,19 +76,19 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     };
   }
 
-  if (temp <= 0 && rain === 0.0 && wind <= 5) {
+  if (temp <= 5 && rain === 0.0 && wind <= 5) {
     return {
-      Top: [WarmJacket, WarmBaseLayer],
-      Bottom: [WarmLongTrousers, Gloves],
-      topPic: ["../../images/warm jacket.svg", "../../images/sweater.svg"],
-      bottomPic: ["../../images/warm trousers.svg", "../../images/gloves.svg"]
+      Top: [WarmJacket],
+      Bottom: [WarmLongTrousers],
+      topPic: ["../../images/warm jacket.svg",],
+      bottomPic: ["../../images/warm trousers.svg",]
     };
   }
   if (temp <= 5 && rain === 0.0 && wind <= 5) {
     return {
-      Top: [Jacket, BaseLayer],
+      Top: [Jacket,],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/jacket.svg", "../../images/long t-shirt.svg"],
+      topPic: ["../../images/jacket.svg"],
       bottomPic: ["../../images/warm trousers.svg"]
     };
   }
@@ -109,5 +110,25 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
       bottomPic: ["../../images/trousers.svg"]
     }
   }
+  if (temp <= 5 && rain >= 0.0 ) {
+    return {
+      Top: [RainCoat],
+      Bottom: [RainTrousers],
+      topPic: ["../../images/rain coat.svg"],
+      bottomPic: ["../../images/rain trousers.svg"]
+    };
+  }
+  if (temp > 0 && rain >= 0.0 && wind >= 0) {
+    return {
+      Top: [RainCoat],
+      Bottom: [RainTrousers],
+      topPic: ["../../images/rain coat.svg"],
+      bottomPic: ["../../images/rain trousers.svg"]
+
+    };
+  }
+
+
   return { Top: [], Bottom: [], topPic: [], bottomPic: [] };
 };
+
