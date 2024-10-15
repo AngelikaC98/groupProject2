@@ -8,7 +8,6 @@ export const getClothingRecs = async (
   afternoon: ClothingRecommendation;
 }> => {
   // TODO - Check that it is getting the right time by checking the dateTime
-
   // { dateTime: '', weatherData: {temp: 3, weather: "Clear sky", rain: 0, wind: 1}}
   let morning = weatherData[0].weatherData;
   // { dateTime: '', weatherData: {temp: 3, weather: "Clear sky", rain: 0, wind: 1}}

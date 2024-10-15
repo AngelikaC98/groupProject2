@@ -58,19 +58,49 @@ export const getWeatherData = async (stationId?: number) => {
   return res.json();
 };
 
+export const getClothingData = async () => {
+  const url = new URL(API_ENDPOINT + "/clothes");
+  const res = await fetch(url.toString());
+  return res.json();
+};
 
 async function showWeather() {
   let weather = await getWeatherData()
   let element = document.getElementsByClassName("today-weather")[0]
   let weatherNow = weather[3].weatherData
   element.innerHTML = `<p>Temp: ${weatherNow.temp}℃</p>
-  <p> Wind speed: ${weatherNow.wind} m/s</p>
-  <p> Rain: ${weatherNow.rain}mm </p>
-  <p> ${weatherNow.weather}</p>`
+    <p> Wind speed: ${weatherNow.wind} m/s</p>
+    <p> Rain: ${weatherNow.rain}mm </p>
+    <p> ${weatherNow.weather}</p>`
 }
 
 showWeather();
 
+const showClothRecs = async ()=> {
+  let clothes = await getClothingData()
+  let element = document.getElementById("clothes")
+  console.log(clothes)
+  if(!element) return 0
+  element.innerHTML =
+   `<div class="flex justify-center space-x-6 p-6">
+      <div class="flex flex-col justify-cente items-center" >
+        <div style="height:84px; width:84px;" class="border-4 border-cyan-900 rounded-xl flex items-center justify-center">
+            <img src="${clothes.morning.topPic[0]}">
+        </div>
+            <p class="text-cyan-900 text-center">${clothes.morning.Top[0]}</p>
+      </div>
+    
+      <div class="flex flex-col justify-center items-center">
+          <div style= "height:84px; width:84px;" class="border-4 border-cyan-900 rounded-xl flex items-center justify-center ">
+            <img class="w-8" src="${clothes.morning.bottomPic[0]}" >
+          </div>
+            <p class="text-cyan-900 text-center">${clothes.morning.Bottom[0]}</p>
+      </div>
+    </div>
+  `
+
+}
+showClothRecs()
 
 
 export const getHealthImpact = (minutes: number) => {
