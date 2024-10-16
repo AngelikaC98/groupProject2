@@ -1,3 +1,4 @@
+export const DISTANCE = 10.3; // km
 export const getClimateImpactPerMonth = (dailyDistance) => {
     const TOYOTA_YARIS_CO2_PER_KM = 127; // grams CO2 per kilometre (sourced from Transport Direct [https://www.aef.org.uk/downloads/Grams_CO2_transportmodesUK.pdf])
     const TESLA_MODEL3_CO2_PER_KM = 0.76; // grams CO2 per kilometre in Iceland (sourced from Landsvirkjun [https://www.landsvirkjun.com] and Tesla [https://www.tesla.com])
@@ -15,23 +16,22 @@ export const getClimateImpactPerMonth = (dailyDistance) => {
 };
 export const clothingRecs = (weather) => {
     if (weather.temp >= 8 && weather.rain >= 0.0 && weather.wind > 9) {
-        return 'Top: Optional light jacket Bottom: Shorts or light trousers';
+        return "Top: Optional light jacket Bottom: Shorts or light trousers";
     }
     if (weather.temp <= 2 && weather.rain <= 0.0 && weather.wind >= 12) {
-        return 'Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers, gloves and hat';
+        return "Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers, gloves and hat";
     }
     if (weather.temp <= 8 && weather.rain <= 0.0 && weather.wind >= 11) {
-        return 'Top: wear a jacket and a base layer. Bottom: Long warm trousers';
+        return "Top: wear a jacket and a base layer. Bottom: Long warm trousers";
     }
     if (weather.temp <= 5 && weather.rain >= 0.4 && weather.wind >= 11) {
-        return 'Top: Warm base layer and rain coat. Bottom: Warm long trousers and rain trousers';
+        return "Top: Warm base layer and rain coat. Bottom: Warm long trousers and rain trousers";
     }
     if (weather.temp <= 3 && weather.rain <= 0.0 && weather.wind >= 10) {
-        return 'Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers';
+        return "Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers";
     }
     return undefined;
 };
-clothingRecs({ temp: 2, rain: 0.0, wind: 10 });
 const API_ENDPOINT = "http://localhost:3000";
 export const getWeatherData = async (stationId) => {
     const url = new URL(API_ENDPOINT + "/weather");
@@ -46,7 +46,7 @@ export const getClothingData = async () => {
     const res = await fetch(url.toString());
     return res.json();
 };
-async function showWeather() {
+export async function showWeather() {
     let weather = await getWeatherData();
     let element = document.getElementsByClassName("today-weather")[0];
     let weatherNow = weather[3].weatherData;
@@ -55,15 +55,14 @@ async function showWeather() {
     <p> Rain: ${weatherNow.rain}mm </p>
     <p> ${weatherNow.weather}</p>`;
 }
-showWeather();
-const showClothRecs = async () => {
+export const showClothRecs = async () => {
+    console.log("showClothRecs");
     let clothes = await getClothingData();
     let element = document.getElementById("clothes");
     console.log(clothes);
     if (!element)
         return 0;
-    element.innerHTML =
-        `<div class="flex justify-center space-x-6 p-6">
+    element.innerHTML = `<div class="flex justify-center space-x-6 p-6">
       <div class="flex flex-col justify-cente items-center" >
         <div style="height:84px; width:84px;" class="border-4 border-cyan-900 rounded-xl flex items-center justify-center">
             <img src="${clothes.morning.topPic[0]}">
@@ -80,15 +79,15 @@ const showClothRecs = async () => {
     </div>
   `;
 };
-showClothRecs();
 export const getHealthImpact = (minutes) => {
     // Cycle commuting was associated with a lower risk of CVD, cancer, and all cause mortality.
     // Link to the study: [https://www.bmj.com/content/357/bmj.j1456?tab=related#datasupp]
     // regular cycling cut the risk of death from any cause by 41%, the incidence of cancer by 45% and heart disease by 46%.
     // Link [https://www.bbc.com/news/health-39641122]
     // Each week, adults should move briskly for at least 150 minutes
+    const RECOMMENDED_DAILY_ACTIVITY = 150 / 7;
     return {
-        percentOfRecommendedActivity: Math.round((minutes / 150 / 7) * 100),
+        percentOfRecommendedActivity: Math.round((minutes / RECOMMENDED_DAILY_ACTIVITY) * 100),
         generalHealthBenefits: [
             "cut the risk of death from any cause by 41%",
             "decrease the incidence of cancer by 45%",

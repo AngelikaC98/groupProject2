@@ -1,118 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind  -->
+    <link href="./output.css" rel="stylesheet" />
 
-  <!-- Tailwind  -->
-  <link href="./output.css" rel="stylesheet">
+    <script type="module" src="/frontend/dist/src/utils.js"></script>
 
-  <script type="module" src="/frontend/dist/src/utils.js"></script>
+    <title>Drive</title>
+    <link href="./output.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="../dist/src/drive.js" defer></script>
+  </head>
 
+  <body class="bg-white">
+    <!--Logo-->
+    <header>
+      <img src="../../images/logo.svg" alt="Logo" class="p-6" />
+    </header>
 
-  <title>Drive</title>
-  <link href="./output.css" rel="stylesheet">
-  <link href="../style.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-</head>
+    <!--Text-->
+    <main class="flex flex-col">
+      <div class="flex justify-center flex-col w-screen p-8 space-y-4">
+        <div class="flex justify-center">
+          <h1 class="text-4xl font-light -translate-x-8">GOOD DAY FOR</h1>
+        </div>
 
-<body class="bg-white ">
-  <!--Logo-->
-  <header>
-    <img src="../../images/logo.svg" alt="Logo" class="p-6" />
-  </header>
-
-  <!--Text-->
-  <main class="flex flex-col ">
-    <div class="flex justify-center flex-col w-screen p-8 space-y-4">
-      <div class="flex justify-center">
-        <h1 class="text-4xl font-light -translate-x-8">GOOD DAY FOR</h1>
+        <div class="flex justify-center">
+          <h1 class="text-4xl font-bold text-cyan-900 translate-x-20">DRIVE</h1>
+        </div>
       </div>
-      
-      <div class="flex justify-center">
-        <h1 class="text-4xl font-bold text-cyan-900 translate-x-20">DRIVE</h1>
-      </div>
-    </div>
 
-    <div class="flex flex-col items-center p-6">
-      <h1 class="text-2xl font-semibold text-cyan-900 p-6">Weather today</h1>
-      <div class="today-weather bg-gradient-to-b from-cyan-900 to-cyan-500 text-white p-16 text-2xl rounded-xl shadow-lg leading-loose text-center ">
-        <p>rain 0.0</p>
+      <div class="flex flex-col items-center p-6">
+        <h1 class="text-2xl font-semibold text-cyan-900 p-6">Weather today</h1>
+        <div
+          class="today-weather bg-gradient-to-b from-cyan-900 to-cyan-500 text-white p-16 text-2xl rounded-xl shadow-lg leading-loose text-center"
+        >
+          <!-- <p>rain 0.0</p>
         <p>wind 4m/s</p>
-        <p>5℃</p>
-      </div>
-    </div>
-
-
-    <!--Spotify-->
-    <div>
-      <h1 class="text-center text-lg  p-6">SPOTIFY RECOMMENDATION</h1>
-
-      <div class="p-6 flex justify-center w-full overflow-hidden ">
-        <div class="flex gap-6 overflow-scroll">
-
-          <div class=" flex justify-center h-auto">
-            <!--Playlist 1-->
-            <iframe style="border-radius:10px "
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1EVHGWrwldPRtj?utm_source=generator" width="260"
-              height="200" frameborder="0" allow="encrypted-media" loading="lazy">
-            </iframe>
-          </div>
-
-          <div class=" flex justify-center h-auto">
-            <!--Playlist 2-->
-            <iframe style="border-radius:12px"
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1DWUNIrSzKgQbP?utm_source=generator" width="260"
-              height="200" frameborder="0" allow="encrypted-media" loading="lazy">
-            </iframe>
-          </div>
-
-          <!--Playlist 3-->
-          <div class=" flex justify-center h-auto">
-            <iframe style="border-radius:12px"
-              src="https://open.spotify.com/embed/artist/164Uj4eKjl6zTBKfJLFKKK?utm_source=generator&theme=0"
-              width="260" height="200" frameborder="0" allow="encrypted-media" loading="lazy">
-            </iframe>
-          </div>
-
-          <!--Playlist 4-->
-          <div class=" flex justify-center h-auto">
-            <iframe style="border-radius:12px"
-              src="https://open.spotify.com/embed/album/6hh5ax5BomINXGoi4q7FDP?utm_source=generator" width="260"
-              height="200" frameborder="0" allow="encrypted-media" loading="lazy">
-            </iframe>
-          </div>
-
-          <!--Playlist 5-->
-          <div class=" flex justify-center h-auto">
-            <iframe style="border-radius:12px"
-              src="https://open.spotify.com/embed/album/7swnkIY8Si5ZNbZRoeT1my?utm_source=generator" width="260"
-              height="200" frameborder="0" allow="encrypted-media" loading="lazy">
-            </iframe>
-          </div>
-
+        <p>5℃</p> -->
         </div>
       </div>
-    </div>
-    <footer class="text-lg flex justify-center p-6 ">
-      INFORMATION ABOUT YOUR JOUNEY
-    </footer>
-    <footer class="flex justify-center text-center flex-wrap  space-x-4 p-6">
-        <div>
-            <p class="  text-3xl font-semibold text-cyan-900"> 0 km </p> 
-            <p class="text-lg"> Distance</p>
-        </div>
-        <!--red line -->
-        <div class="border-l-4 border-red-700 h-34"></div>
-        <div>
-            <p class="  text-3xl font-semibold text-cyan-900"> 0 min </p> 
-            <p class="text-lg">Activity </p>
-        </div>
-    </footer>
-  </main>
-</body>
 
+      <!--Spotify-->
+      <div>
+        <h1 class="text-center text-lg p-6">SPOTIFY RECOMMENDATION</h1>
+
+        <div class="p-6 flex justify-center w-full overflow-hidden">
+          <div class="flex gap-6 overflow-scroll">
+            <div class="flex justify-center h-auto">
+              <!--Playlist 1-->
+              <iframe
+                style="border-radius: 10px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1EVHGWrwldPRtj?utm_source=generator"
+                width="260"
+                height="200"
+                frameborder="0"
+                allow="encrypted-media"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+
+            <div class="flex justify-center h-auto">
+              <!--Playlist 2-->
+              <iframe
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DWUNIrSzKgQbP?utm_source=generator"
+                width="260"
+                height="200"
+                frameborder="0"
+                allow="encrypted-media"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+
+            <!--Playlist 3-->
+            <div class="flex justify-center h-auto">
+              <iframe
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/artist/164Uj4eKjl6zTBKfJLFKKK?utm_source=generator&theme=0"
+                width="260"
+                height="200"
+                frameborder="0"
+                allow="encrypted-media"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+
+            <!--Playlist 4-->
+            <div class="flex justify-center h-auto">
+              <iframe
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/album/6hh5ax5BomINXGoi4q7FDP?utm_source=generator"
+                width="260"
+                height="200"
+                frameborder="0"
+                allow="encrypted-media"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+
+            <!--Playlist 5-->
+            <div class="flex justify-center h-auto">
+              <iframe
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/album/7swnkIY8Si5ZNbZRoeT1my?utm_source=generator"
+                width="260"
+                height="200"
+                frameborder="0"
+                allow="encrypted-media"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
