@@ -21,8 +21,7 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
   };
 };
 
-const API_ENDPOINT =
-  "https://group-project2.vercel.app";
+const API_ENDPOINT = "https://group-project2.vercel.app";
 
 export const getWeatherData = async (stationId?: number) => {
   const url = new URL(API_ENDPOINT + "/weather");
@@ -30,7 +29,6 @@ export const getWeatherData = async (stationId?: number) => {
     url.searchParams.append("stationId", stationId + "");
   }
   const res = await fetch(url.toString());
-  console.log("res",res)
   return res.json();
 };
 
@@ -50,7 +48,8 @@ export async function showWeather() {
   element.innerHTML = `<p>Temp: ${weatherNow.temp}℃</p>
     <p> Wind speed: ${weatherNow.wind} m/s</p>
     <p> Rain: ${weatherNow.rain}mm </p>
-    <p> ${weatherNow.weather}</p>`;
+    <p> ${weatherNow.weather}</p>
+    <p> ${weatherNow.visibility} km </p>`;
 }
 
 export const showClothRecs = async () => {
