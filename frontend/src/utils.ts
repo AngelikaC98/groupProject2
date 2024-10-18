@@ -21,20 +21,27 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
   };
 };
 
-const API_ENDPOINT = "http://localhost:3000";
+const API_ENDPOINT =
+  "https://group-project2-56ed9nxd5-angelikas-projects-6511d85c.vercel.app/";
 
 export const getWeatherData = async (stationId?: number) => {
   const url = new URL(API_ENDPOINT + "/weather");
   if (stationId) {
     url.searchParams.append("stationId", stationId + "");
   }
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    mode: "no-cors",
+  });
   return res.json();
 };
 
 const getClothingData = async () => {
   const url = new URL(API_ENDPOINT + "/clothes");
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    mode: "no-cors", // This will bypass CORS.
+  });
   return res.json();
 };
 
