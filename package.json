@@ -2,7 +2,8 @@
   "scripts": {
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
-    "build": "cd backend && npm start"
+    "build": "",
+    "start": "ts-node backend/src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
