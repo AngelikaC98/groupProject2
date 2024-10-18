@@ -20,12 +20,18 @@ export const getWeatherData = async (stationId) => {
     if (stationId) {
         url.searchParams.append("stationId", stationId + "");
     }
-    const res = await fetch(url.toString());
+    const res = await fetch(url.toString(), {
+        method: "GET",
+        mode: "no-cors",
+    });
     return res.json();
 };
 const getClothingData = async () => {
     const url = new URL(API_ENDPOINT + "/clothes");
-    const res = await fetch(url.toString());
+    const res = await fetch(url.toString(), {
+        method: "GET",
+        mode: "no-cors", // This will bypass CORS.
+    });
     return res.json();
 };
 export async function showWeather() {
