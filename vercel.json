@@ -1,4 +1,5 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/backend/src" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/backend/src" }],
+  "outputDirectory": "backend/"
 }
