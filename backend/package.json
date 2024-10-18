@@ -2,11 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "ts-node src/server.ts",
-    "test": "jest", 
-    "build": "ts-node src/server.ts"
+    "start": "ts-node src/index.ts",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +14,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "fast-xml-parser": "^4.5.0",
-    "fetch-mock": "^11.1.5",
-    "node-fetch": "^2.7.0",
-    "tailwind": "^4.0.0",
-    "ts-node": "^10.9.2"
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
