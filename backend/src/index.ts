@@ -1,16 +1,16 @@
 import express from "express";
-const cors = require('cors');
+const cors = require("cors");
 
 import { getWeatherData } from "./fetchData/getWeatherData";
 import { getDirections } from "./fetchData/getDirections";
 import { getClothingRecs } from "./fetchData/getClothingRecs";
 
 const app = express();
-const port = 3002;
+const port = process.env.PORT || 3002;
 
 app.use(cors());
 
-app.get("/weather", express.json(), async (req:any, res:any) => {
+app.get("/weather", express.json(), async (req: any, res: any) => {
   const stationId: number = Number(req.query.stationId);
   const weather = await getWeatherData(stationId);
   if (weather.success) {
@@ -20,19 +20,18 @@ app.get("/weather", express.json(), async (req:any, res:any) => {
   }
 });
 
-app.get("/clothes", express.json(), async (req:any, res:any) => {
-
+app.get("/clothes", express.json(), async (req: any, res: any) => {
   const weather = await getWeatherData(1);
 
   if (weather.success) {
-    const clothes= await getClothingRecs(weather.success);
+    const clothes = await getClothingRecs(weather.success);
     res.status(200).json(clothes);
   } else {
     res.status(500).json({ error: weather.error });
   }
 });
 
-app.get("/directions", express.json(), async (req:any, res:any) => {
+app.get("/directions", express.json(), async (req: any, res: any) => {
   const { origin, destination } = req.query as {
     origin: string;
     destination: string;
@@ -59,5 +58,5 @@ app.get("/directions", express.json(), async (req:any, res:any) => {
   }
 });
 
-console.log(`Server is running at http://localhost:${port}.`)
+console.log(`Server is running at http://localhost:${port}.`);
 app.listen(port);
