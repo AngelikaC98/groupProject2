@@ -2,7 +2,7 @@
   "scripts": {
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
-    "build": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step needed\"",
     "start": "ts-node backend/src/index.ts"
   },
   "dependencies": {
