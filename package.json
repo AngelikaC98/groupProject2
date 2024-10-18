@@ -2,10 +2,10 @@
   "scripts": {
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
-    "build": "ts-node /backend/src/index.ts"
+    "build": "cd backend && npm start"
 
   },
-  "devDependencies": {
-    "tailwindcss": "^3.4.13"
+  "dependencies": {    
+    "ts-node": "^10.9.2"
   }
 }
