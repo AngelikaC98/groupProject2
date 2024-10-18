@@ -10,7 +10,7 @@ const port = 3002;
 
 app.use(cors());
 
-app.get("/weather", express.json(), async (req, res) => {
+app.get("/weather", express.json(), async (req:any, res:any) => {
   const stationId: number = Number(req.query.stationId);
   const weather = await getWeatherData(stationId);
   if (weather.success) {
@@ -20,7 +20,7 @@ app.get("/weather", express.json(), async (req, res) => {
   }
 });
 
-app.get("/clothes", express.json(), async (req, res) => {
+app.get("/clothes", express.json(), async (req:any, res:any) => {
 
   const weather = await getWeatherData(1);
 
@@ -32,7 +32,7 @@ app.get("/clothes", express.json(), async (req, res) => {
   }
 });
 
-app.get("/directions", express.json(), async (req, res) => {
+app.get("/directions", express.json(), async (req:any, res:any) => {
   const { origin, destination } = req.query as {
     origin: string;
     destination: string;
