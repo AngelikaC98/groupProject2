@@ -14,7 +14,7 @@ export const getClimateImpactPerMonth = (dailyDistance) => {
         treesEquivalentEle: Math.trunc(savedCO2EleKg / TREE_CO2_ABSORPTION_PER_MONTH),
     };
 };
-const API_ENDPOINT = "http://localhost:3000";
+const API_ENDPOINT = "https://group-project2-56ed9nxd5-angelikas-projects-6511d85c.vercel.app/";
 export const getWeatherData = async (stationId) => {
     const url = new URL(API_ENDPOINT + "/weather");
     if (stationId) {
