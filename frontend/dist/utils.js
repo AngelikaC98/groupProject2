@@ -14,16 +14,14 @@ export const getClimateImpactPerMonth = (dailyDistance) => {
         treesEquivalentEle: Math.trunc(savedCO2EleKg / TREE_CO2_ABSORPTION_PER_MONTH),
     };
 };
-const API_ENDPOINT = "https://group-project2-56ed9nxd5-angelikas-projects-6511d85c.vercel.app/";
+const API_ENDPOINT = "https://group-project2.vercel.app";
 export const getWeatherData = async (stationId) => {
     const url = new URL(API_ENDPOINT + "/weather");
     if (stationId) {
         url.searchParams.append("stationId", stationId + "");
     }
-    const res = await fetch(url.toString(), {
-        method: "GET",
-        mode: "no-cors",
-    });
+    const res = await fetch(url.toString());
+    console.log("res", res);
     return res.json();
 };
 const getClothingData = async () => {

@@ -22,17 +22,15 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
 };
 
 const API_ENDPOINT =
-  "https://group-project2-56ed9nxd5-angelikas-projects-6511d85c.vercel.app/";
+  "https://group-project2.vercel.app";
 
 export const getWeatherData = async (stationId?: number) => {
   const url = new URL(API_ENDPOINT + "/weather");
   if (stationId) {
     url.searchParams.append("stationId", stationId + "");
   }
-  const res = await fetch(url.toString(), {
-    method: "GET",
-    mode: "no-cors",
-  });
+  const res = await fetch(url.toString());
+  console.log("res",res)
   return res.json();
 };
 
