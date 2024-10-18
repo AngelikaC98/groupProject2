@@ -8,40 +8,17 @@ export const getClimateImpactPerMonth = (dailyDistance: number) => {
   // assumes commuting 5 days a week per month
   const monthlyDistance = (dailyDistance * 5 * 52) / 12;
 
-  const savedCO2Kg = Math.round(monthlyDistance * TOYOTA_YARIS_CO2_PER_KM);
-  const savedCO2EleKg = Math.round(monthlyDistance * TESLA_MODEL3_CO2_PER_KM);
+  const savedCO2Kg = monthlyDistance * TOYOTA_YARIS_CO2_PER_KM;
+  const savedCO2EleKg = monthlyDistance * TESLA_MODEL3_CO2_PER_KM;
 
   return {
-    savedCO2: savedCO2Kg / 1000,
+    savedCO2: Math.trunc(savedCO2Kg / 1000),
     savedCO2Ele: savedCO2EleKg / 1000,
     treesEquivalent: Math.trunc(savedCO2Kg / TREE_CO2_ABSORPTION_PER_MONTH),
     treesEquivalentEle: Math.trunc(
       savedCO2EleKg / TREE_CO2_ABSORPTION_PER_MONTH
     ),
   };
-};
-type Weather = {
-  temp: number;
-  rain: number;
-  wind: number;
-};
-export const clothingRecs = (weather: Weather) => {
-  if (weather.temp >= 8 && weather.rain >= 0.0 && weather.wind > 9) {
-    return "Top: Optional light jacket Bottom: Shorts or light trousers";
-  }
-  if (weather.temp <= 2 && weather.rain <= 0.0 && weather.wind >= 12) {
-    return "Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers, gloves and hat";
-  }
-  if (weather.temp <= 8 && weather.rain <= 0.0 && weather.wind >= 11) {
-    return "Top: wear a jacket and a base layer. Bottom: Long warm trousers";
-  }
-  if (weather.temp <= 5 && weather.rain >= 0.4 && weather.wind >= 11) {
-    return "Top: Warm base layer and rain coat. Bottom: Warm long trousers and rain trousers";
-  }
-  if (weather.temp <= 3 && weather.rain <= 0.0 && weather.wind >= 10) {
-    return "Top: Warm base layer and warm jacket. Bottom: Warm long trousers, protective trousers";
-  }
-  return undefined;
 };
 
 const API_ENDPOINT = "http://localhost:3000";
@@ -55,7 +32,7 @@ export const getWeatherData = async (stationId?: number) => {
   return res.json();
 };
 
-export const getClothingData = async () => {
+const getClothingData = async () => {
   const url = new URL(API_ENDPOINT + "/clothes");
   const res = await fetch(url.toString());
   return res.json();
@@ -72,10 +49,8 @@ export async function showWeather() {
 }
 
 export const showClothRecs = async () => {
-  console.log("showClothRecs");
   let clothes = await getClothingData();
   let element = document.getElementById("clothes");
-  console.log(clothes);
   if (!element) return 0;
   element.innerHTML = `<div class="flex justify-center space-x-6 p-6">
       <div class="flex flex-col justify-cente items-center" >

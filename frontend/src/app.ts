@@ -2,10 +2,8 @@ import { getWeatherData, showWeather } from "./utils.js";
 
 function addOnClickHandler() {
   const button = document.getElementById("decision-button");
-  console.log("button", button);
   if (!button) return null;
   button.addEventListener("click", async () => {
-    console.log("clicked");
     let weather = await getWeatherData();
     let weatherNow = weather[3].weatherData;
 
