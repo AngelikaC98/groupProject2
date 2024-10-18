@@ -16,17 +16,18 @@ export enum Clothing {
   RainTrousers = "Rain trousers",
 }
 
-export type ClothingRecommendation = { Top: Clothing[]; Bottom: Clothing[], topPic: string[], bottomPic: string[] };
+export type ClothingRecommendation = {
+  Top: Clothing[];
+  Bottom: Clothing[];
+  topPic: string[];
+  bottomPic: string[];
+};
 
 export const clothingRecs = (weather: Weather): ClothingRecommendation => {
-  console.log(weather)
   const { temp, rain, wind } = weather;
   const {
-    WarmBaseLayer,
-    BaseLayer,
     WarmJacket,
     WarmLongTrousers,
-    Gloves,
     Jacket,
     Trousers,
     RainCoat,
@@ -37,16 +38,16 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return {
       Top: [WarmJacket],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/warm jacket.svg"],
-      bottomPic: ["../../images/warm trousers.svg"]
+      topPic: ["./assets/warm jacket.svg"],
+      bottomPic: ["./assets/warm trousers.svg"],
     };
   }
   if (temp <= 5 && rain === 0.0 && wind == 0) {
     return {
       Top: [Jacket],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/jacket.svg"],
-      bottomPic: ["../../images/warm trousers.svg"]
+      topPic: ["./assets/jacket.svg"],
+      bottomPic: ["./assets/warm trousers.svg"],
     };
   }
   if (temp > 5 && rain === 0.0 && wind == 0) {
@@ -54,7 +55,7 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
       Top: [Jacket],
       Bottom: [Trousers],
       topPic: ["../..images/jacket.svg/"],
-      bottomPic: ["../../images/trousers.svg"]
+      bottomPic: ["./assets/trousers.svg"],
     };
   }
 
@@ -62,17 +63,16 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return {
       Top: [RainCoat],
       Bottom: [RainTrousers],
-      topPic: ["../../images/rain coat.svg"],
-      bottomPic: ["../../images/rain trousers.svg"]
+      topPic: ["./assets/rain coat.svg"],
+      bottomPic: ["./assets/rain trousers.svg"],
     };
   }
   if (temp > 0 && rain >= 0.0 && wind == 0) {
     return {
       Top: [RainCoat],
       Bottom: [RainTrousers],
-      topPic: ["../../images/rain coat.svg"],
-      bottomPic: ["../../images/rain trousers.svg"]
-
+      topPic: ["./assets/rain coat.svg"],
+      bottomPic: ["./assets/rain trousers.svg"],
     };
   }
 
@@ -80,55 +80,51 @@ export const clothingRecs = (weather: Weather): ClothingRecommendation => {
     return {
       Top: [WarmJacket],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/warm jacket.svg",],
-      bottomPic: ["../../images/warm trousers.svg",]
+      topPic: ["./assets/warm jacket.svg"],
+      bottomPic: ["./assets/warm trousers.svg"],
     };
   }
   if (temp <= 5 && rain === 0.0 && wind <= 5) {
     return {
-      Top: [Jacket,],
+      Top: [Jacket],
       Bottom: [WarmLongTrousers],
-      topPic: ["../../images/jacket.svg"],
-      bottomPic: ["../../images/warm trousers.svg"]
+      topPic: ["./assets/jacket.svg"],
+      bottomPic: ["./assets/warm trousers.svg"],
     };
   }
   if (temp > 5 && rain === 0.0 && wind <= 5) {
     return {
       Top: [Jacket],
       Bottom: [Trousers],
-      topPic: ["../../images/jacket.svg"],
-      bottomPic: ["../../images/trousers.svg"]
+      topPic: ["./assets/jacket.svg"],
+      bottomPic: ["./assets/trousers.svg"],
     };
-
   }
 
   if (temp >= 6 && rain == 0.0 && wind >= 6) {
     return {
       Top: [Jacket],
       Bottom: [Trousers],
-      topPic: ["../../images/jacket.svg"],
-      bottomPic: ["../../images/trousers.svg"]
-    }
+      topPic: ["./assets/jacket.svg"],
+      bottomPic: ["./assets/trousers.svg"],
+    };
   }
-  if (temp <= 5 && rain >= 0.0 ) {
+  if (temp <= 5 && rain >= 0.0) {
     return {
       Top: [RainCoat],
       Bottom: [RainTrousers],
-      topPic: ["../../images/rain coat.svg"],
-      bottomPic: ["../../images/rain trousers.svg"]
+      topPic: ["./assets/rain coat.svg"],
+      bottomPic: ["./assets/rain trousers.svg"],
     };
   }
   if (temp > 0 && rain >= 0.0 && wind >= 0) {
     return {
       Top: [RainCoat],
       Bottom: [RainTrousers],
-      topPic: ["../../images/rain coat.svg"],
-      bottomPic: ["../../images/rain trousers.svg"]
-
+      topPic: ["./assets/rain coat.svg"],
+      bottomPic: ["./assets/rain trousers.svg"],
     };
   }
 
-
   return { Top: [], Bottom: [], topPic: [], bottomPic: [] };
 };
-
